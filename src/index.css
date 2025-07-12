@@ -17,3 +17,7 @@
   --color-deepLight: #a094b8; /* Roxo mais claro */
   --color-deepDark: #4b3a5c; /* Roxo mais escuro */
 }
+
+p, h1, h2, h3, h4, h5, h6 {
+  @apply p-0 m-0;
+}
