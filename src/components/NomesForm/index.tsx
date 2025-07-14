@@ -70,12 +70,6 @@ function NomesForm(props: NomesFormProps) {
         <p>Iniciar Jogo</p>
         <FaPlay />
       </button>
-
-      <button
-        className="absolute top-2 right-2 text-xl text-accentDark hover:text-accent transition hover:scale-110 hover:cursor-pointer"
-        onClick={closeForm}
-        type="button"
-      ></button>
     </form>
   );
 }

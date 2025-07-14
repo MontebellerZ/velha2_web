@@ -5,6 +5,7 @@ import NomesForm from "./components/NomesForm";
 import { Bounce, ToastContainer } from "react-toastify";
 import Controles from "./components/Controles";
 import { useModal } from "./contexts/useModal";
+import ComoJogar from "./components/ComoJogar";
 
 function App() {
   const [p1, setP1] = useState("");
@@ -23,14 +24,19 @@ function App() {
     );
   };
 
+  const openComoJogar = () => {
+    setModal(<ComoJogar />);
+  };
+
   return (
-    <div className="h-dvh w-dvw overflow-hidden bg-primary relative">
+    <div className="h-dvh w-dvw overflow-hidden bg-primary relative flex flex-col items-center p-6">
       <Header />
 
       <Controles
         onRenomear={openNomesForm}
         onDesfazer={() => {}}
         onReiniciar={() => {}}
+        onComoJogar={openComoJogar}
         resultados={{
           empates: 0,
           player1: {

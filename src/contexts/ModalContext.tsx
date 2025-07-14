@@ -1,17 +1,33 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ModalContext } from "./useModal";
 import { IoClose } from "react-icons/io5";
 
 export function ModalProvider({ children }: { children: ReactNode }) {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
 
-  function setModal(content: ReactNode) {
+  const setModal = (content: ReactNode) => {
     setModalContent(content);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setModalContent(null);
-  }
+  };
+
+  useEffect(() => {
+    if (!modalContent) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [modalContent]);
 
   return (
     <ModalContext.Provider value={{ setModal, closeModal }}>

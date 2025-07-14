@@ -1,14 +1,14 @@
+import { FaArrowRotateLeft, FaPencil } from "react-icons/fa6";
 import type { Jogador } from "../../types/Jogador";
-import ComoJogarBtn from "./ComoJogarBtn";
-// import DesfazerBtn from "./DesfazerBtn";
-import PlacarBtn from "./Placar";
-// import ReiniciarBtn from "./ReiniciarBtn";
-import RenomearBtn from "./RenomearBtn";
+import ControlesBtn from "./ControlesBtn";
+// import Placar from "./Placar";
+import { FaArrowLeft, FaQuestion } from "react-icons/fa";
 
 interface ControlesProps {
   onDesfazer: () => void;
   onReiniciar: () => void;
   onRenomear: () => void;
+  onComoJogar: () => void;
   resultados: {
     player1: Jogador;
     player2: Jogador;
@@ -18,12 +18,24 @@ interface ControlesProps {
 
 function Controles(props: ControlesProps) {
   return (
-    <div>
-      <RenomearBtn onRenomear={props.onRenomear} />
-      {/* <ReiniciarBtn onReiniciar={props.onReiniciar} /> */}
-      <PlacarBtn />
-      {/* <DesfazerBtn onDesfazer={props.onDesfazer} /> */}
-      <ComoJogarBtn />
+    <div className="flex items-center justify-center gap-2">
+      <ControlesBtn onClick={props.onRenomear} title="Renomear">
+        <FaPencil />
+      </ControlesBtn>
+
+      <ControlesBtn onClick={props.onReiniciar} title="Reiniciar">
+        <FaArrowRotateLeft />
+      </ControlesBtn>
+
+      {/* <Placar resultados={props.resultados} /> */}
+
+      <ControlesBtn onClick={props.onDesfazer} title="Desfazer jogada">
+        <FaArrowLeft />
+      </ControlesBtn>
+
+      <ControlesBtn onClick={props.onComoJogar} title="Como jogar">
+        <FaQuestion />
+      </ControlesBtn>
     </div>
   );
 }

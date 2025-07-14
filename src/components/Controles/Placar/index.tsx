@@ -1,5 +1,5 @@
-function PlacarBtn() {
+function Placar() {
   return <div></div>;
 }
 
-export default PlacarBtn;
+export default Placar;
