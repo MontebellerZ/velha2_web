@@ -43,7 +43,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="z-50 absolute top-1 right-2 text-2xl text-accentDark hover:text-accent transition-all hover:scale-110 hover:cursor-pointer"
+              className="z-50 absolute top-1 right-2 text-2xl text-accentDark hover:text-accent transition-all hover:scale-110"
               onClick={closeModal}
               type="button"
             >

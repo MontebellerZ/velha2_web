@@ -1,7 +1,5 @@
 import { FaArrowRotateLeft, FaPencil } from "react-icons/fa6";
-import type { Jogador } from "../../types/Jogador";
 import ControlesBtn from "./ControlesBtn";
-// import Placar from "./Placar";
 import { FaArrowLeft, FaQuestion } from "react-icons/fa";
 
 interface ControlesProps {
@@ -9,11 +7,6 @@ interface ControlesProps {
   onReiniciar: () => void;
   onRenomear: () => void;
   onComoJogar: () => void;
-  resultados: {
-    player1: Jogador;
-    player2: Jogador;
-    empates: number;
-  };
 }
 
 function Controles(props: ControlesProps) {
@@ -26,8 +19,6 @@ function Controles(props: ControlesProps) {
       <ControlesBtn onClick={props.onReiniciar} title="Reiniciar">
         <FaArrowRotateLeft />
       </ControlesBtn>
-
-      {/* <Placar resultados={props.resultados} /> */}
 
       <ControlesBtn onClick={props.onDesfazer} title="Desfazer jogada">
         <FaArrowLeft />

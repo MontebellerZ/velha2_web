@@ -50,6 +50,10 @@ ol {
   @apply list-decimal list-inside;
 }
 
+button {
+  @apply cursor-pointer;
+}
+
 /* width */
 ::-webkit-scrollbar {
   @apply w-1.5 rounded-full;

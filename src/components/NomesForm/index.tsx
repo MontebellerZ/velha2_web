@@ -25,7 +25,7 @@ function NomesForm(props: NomesFormProps) {
       return;
     }
 
-    props.onSubmit(p1, p2);
+    props.onSubmit(p1.trim(), p2.trim());
 
     closeForm();
   };
