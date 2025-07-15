@@ -1,5 +1,7 @@
+import Velha from "./Velha";
+
 function Jogo() {
-  return <div></div>;
+  return <Velha />;
 }
 
 export default Jogo;

@@ -1,4 +1,4 @@
-function ControlesBtn(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+function ControlesBtn(props: React.HTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...props}

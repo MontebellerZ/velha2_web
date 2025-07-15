@@ -56,14 +56,14 @@ function App() {
     <div className="h-dvh w-dvw overflow-hidden bg-primary relative flex flex-col items-center gap-4 p-6">
       <Header />
 
-      <Placar {...resultados} />
-
       <Controles
         onRenomear={openNomesForm}
         onDesfazer={() => {}}
         onReiniciar={() => {}}
         onComoJogar={openComoJogar}
       />
+
+      <Placar {...resultados} />
 
       <Jogo />
 
