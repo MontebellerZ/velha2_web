@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import Header from "./components/Header";
 import Jogo from "./components/Jogo";
-import NomesForm from "./components/NomesForm";
+import JogadoresForm from "./components/JogadoresForm";
 import { Bounce, ToastContainer } from "react-toastify";
 import Controles from "./components/Controles";
 import { useModal } from "./contexts/useModal";
@@ -32,16 +32,16 @@ function App() {
     [p1, p2, vitoriasP1, vitoriasP2, empates]
   );
 
-  const setJogadores = (nome1: string, nome2: string) => {
-    setP1((p1) => ({ ...p1, nome: nome1 }));
-    setP2((p2) => ({ ...p2, nome: nome2 }));
+  const setJogadores = (player1: Jogador, player2: Jogador) => {
+    setP1({ ...player1 });
+    setP2({ ...player2 });
   };
 
   const openNomesForm = () => {
     setModal(
-      <NomesForm
-        player1={p1.nome}
-        player2={p2.nome}
+      <JogadoresForm
+        player1={p1}
+        player2={p2}
         onSubmit={setJogadores}
         onClose={() => closeModal()}
       />
