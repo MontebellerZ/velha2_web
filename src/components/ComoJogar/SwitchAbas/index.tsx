@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Abas } from "../../../types/Abas";
 
 interface SwitchAbasProps {
@@ -14,15 +14,33 @@ function SwitchAbas(props: SwitchAbasProps) {
     props.selectAba(aba);
   };
 
-  return (
-    <div className="flex items-center justify-center">
-      <div />
+  const destaquePos = useMemo(() => {
+    const index = props.abas.indexOf(selected);
+    const abas = props.abas.length;
+    return { left: (index / abas) * 100, right: ((index + 1) / abas) * -100 + 100 };
+  }, [selected, props.abas]);
 
-      {props.abas.map((aba, i) => (
-        <button key={i} onClick={() => changeSelection(aba)}>
-          {aba.label}
-        </button>
-      ))}
+  return (
+    <div className="relative flex items-center justify-center rounded-full bg-deep">
+      <div
+        className={`absolute h-full bg-softLight z-0 rounded-full transition-all shadow-sm`}
+        style={{ left: `${destaquePos.left}%`, right: `${destaquePos.right}%` }}
+      />
+
+      <div
+        className="grid gap-0 z-10 text-sm justify-evenly w-full"
+        style={{ gridTemplateColumns: `repeat(${props.abas.length}, 1fr)` }}
+      >
+        {props.abas.map((aba, i) => (
+          <button
+            key={i}
+            onClick={() => changeSelection(aba)}
+            className="flex-1 px-4 py-1 text-center"
+          >
+            {aba.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

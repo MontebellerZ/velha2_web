@@ -6,21 +6,28 @@ import { Bounce, ToastContainer } from "react-toastify";
 import Controles from "./components/Controles";
 import { useModal } from "./contexts/useModal";
 import ComoJogar from "./components/ComoJogar";
+import type { Jogador } from "./types/Jogador";
+import getJogadorPadrao from "./utils/getJogadorPadrao";
 
 function App() {
-  const [p1, setP1] = useState("");
-  const [p2, setP2] = useState("");
+  const [p1, setP1] = useState<Jogador>(getJogadorPadrao());
+  const [p2, setP2] = useState<Jogador>(getJogadorPadrao());
 
   const { setModal, closeModal } = useModal();
 
-  const setPlayerNames = (player1: string, player2: string) => {
-    setP1(player1);
-    setP2(player2);
+  const setJogadores = (nome1: string, nome2: string) => {
+    setP1((p1) => ({ ...p1, nome: nome1 }));
+    setP2((p2) => ({ ...p2, nome: nome2 }));
   };
 
   const openNomesForm = () => {
     setModal(
-      <NomesForm player1={p1} player2={p2} onSubmit={setPlayerNames} onClose={() => closeModal()} />
+      <NomesForm
+        player1={p1.nome}
+        player2={p2.nome}
+        onSubmit={setJogadores}
+        onClose={() => closeModal()}
+      />
     );
   };
 
@@ -37,23 +44,7 @@ function App() {
         onDesfazer={() => {}}
         onReiniciar={() => {}}
         onComoJogar={openComoJogar}
-        resultados={{
-          empates: 0,
-          player1: {
-            derrotas: 0,
-            empates: 0,
-            vitorias: 0,
-            nome: p1,
-            id: "1",
-          },
-          player2: {
-            derrotas: 0,
-            empates: 0,
-            vitorias: 0,
-            nome: p2,
-            id: "2",
-          },
-        }}
+        resultados={{ empates: 0, player1: p1, player2: p2 }}
       />
 
       <Jogo />

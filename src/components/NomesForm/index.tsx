@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useModal } from "../../contexts/useModal";
 
 interface NomesFormProps {
   player1?: string;
@@ -11,14 +10,11 @@ interface NomesFormProps {
 }
 
 function NomesForm(props: NomesFormProps) {
-  const { closeModal } = useModal();
-
   const [p1, setP1] = useState(props.player1 || "");
   const [p2, setP2] = useState(props.player2 || "");
 
   const closeForm = () => {
     props.onClose();
-    closeModal();
   };
 
   const submitNomes = (e: React.FormEvent) => {

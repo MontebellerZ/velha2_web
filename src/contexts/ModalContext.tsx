@@ -23,7 +23,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     }
 
     window.addEventListener("keydown", handleKeyDown);
-    
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -34,17 +34,23 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       {children}
 
       {modalContent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-xs">
-          <div className="relative bg-secondary p-6 rounded-lg shadow-xl">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-xs p-8"
+          onClick={closeModal}
+        >
+          <div
+            className="relative bg-secondary rounded-lg shadow-xl max-w-full max-h-full flex flex-col p-1"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              className="absolute top-2 right-2 text-2xl text-accentDark hover:text-accent transition hover:scale-110 hover:cursor-pointer"
+              className="z-50 absolute top-1 right-2 text-2xl text-accentDark hover:text-accent transition-all hover:scale-110 hover:cursor-pointer"
               onClick={closeModal}
               type="button"
             >
               <IoClose />
             </button>
 
-            {modalContent}
+            <div className="overflow-auto p-6 flex-1">{modalContent}</div>
           </div>
         </div>
       )}

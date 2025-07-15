@@ -18,6 +18,54 @@
   --color-deepDark: #4b3a5c; /* Roxo mais escuro */
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+html,
+body,
+#root {
+  @apply h-dvh w-dvw bg-primary;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply p-0 m-0;
+}
+
+b {
+  @apply font-semibold;
+}
+
+strong {
+  @apply font-bold;
+}
+
+ul {
+  @apply list-disc list-inside;
+}
+
+ol {
+  @apply list-decimal list-inside;
+}
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-1.5 rounded-full;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply w-1.5 rounded-full bg-softLight overflow-hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply w-1.5 rounded-full bg-deepDark overflow-hidden;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-deep;
 }
