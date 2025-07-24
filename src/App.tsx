@@ -65,7 +65,7 @@ function App() {
 
       <Placar {...resultados} />
 
-      <Jogo />
+      <Jogo camadas={2} />
 
       <ToastContainer
         position="bottom-center"

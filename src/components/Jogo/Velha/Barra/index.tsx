@@ -1,19 +1,23 @@
 interface BarraProps {
   orientacao: "vertical" | "horizontal";
+  largura: React.CSSProperties["width"] | React.CSSProperties["height"];
   posicao: number;
   totalPosicoes: number;
 }
 
 function Barra(props: BarraProps) {
   const orient = props.orientacao;
+  const larg = props.largura;
   const distancia = `${((props.posicao + 1) / (props.totalPosicoes + 1)) * 100}%`;
 
   return (
     <div
       className={`aspect-square absolute bg-softLight rounded-full ${
-        orient === "vertical" ? "w-1/50 h-full -translate-x-1/2" : "h-1/50 w-full -translate-y-1/2"
+        orient === "vertical" ? "h-full -translate-x-1/2" : "w-full -translate-y-1/2"
       }`}
-      style={orient === "vertical" ? { left: distancia } : { top: distancia }}
+      style={
+        orient === "vertical" ? { left: distancia, width: larg } : { top: distancia, height: larg }
+      }
     />
   );
 }
